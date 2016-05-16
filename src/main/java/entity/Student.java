@@ -3,6 +3,7 @@ package entity;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -43,15 +44,15 @@ public class Student
 
     
   //  
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", cascade = {CascadeType.ALL})
     private List<Skills> skills = new ArrayList<>(AANTALEVALUTIES); /*arrays die de verschillende skills bijhouden*/
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", cascade = {CascadeType.ALL})
     private List<DriveTechnic> drivetechnics = new ArrayList<>(AANTALEVALUTIES);
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", cascade = {CascadeType.ALL})
     private List<TrafficTechnic>  traffictechnics = new ArrayList<>(AANTALEVALUTIES);
+   
     @ElementCollection
-    
-    private List<String> attitudes = new ArrayList<>(AANTALEVALUTIES);
+    List<String> attitudes = new ArrayList<>(AANTALEVALUTIES);
     @ElementCollection
     private List<Double> progreses = new ArrayList<>(AANTALEVALUTIES);
     /*progress van de progressbar/abx level*/
