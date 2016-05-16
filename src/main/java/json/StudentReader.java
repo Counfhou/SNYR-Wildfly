@@ -74,7 +74,7 @@ public class StudentReader implements MessageBodyReader<Student>{
                     }
                 }
                                 
-                Skills[] skills = {studentAddSkill(jsonStudent.getJsonObject("skills1"),1),studentAddSkill(jsonStudent.getJsonObject("skills2"),2),studentAddSkill(jsonStudent.getJsonObject("skills3"),3)};
+                Skills[] skills = {studentAddSkill(jsonStudent.getJsonObject("skills1")),studentAddSkill(jsonStudent.getJsonObject("skills2")),studentAddSkill(jsonStudent.getJsonObject("skills3"))};
                 student.setSkills(skills);
                 
                 DriveTechnic[] drivetechnic = {studentAddDriveTechnic(jsonStudent.getJsonObject("drive1")),studentAddDriveTechnic(jsonStudent.getJsonObject("drive2")),studentAddDriveTechnic(jsonStudent.getJsonObject("drive3"))};
@@ -90,7 +90,7 @@ public class StudentReader implements MessageBodyReader<Student>{
     }
 
     
-     public Skills studentAddSkill(JsonObject jsonSkills,int ordernr){
+     public Skills studentAddSkill(JsonObject jsonSkills){
         Skills skills = new Skills();
         skills.setFueling(new Status(Color.valueOf(jsonSkills.getJsonObject("fueling").getString("color")), jsonSkills.getJsonObject("fueling").getString("comment")));
         skills.setGps(new Status(Color.valueOf(jsonSkills.getJsonObject("gps").getString("color")), jsonSkills.getJsonObject("gps").getString("comment")));
@@ -102,7 +102,7 @@ public class StudentReader implements MessageBodyReader<Student>{
         skills.setOilcheck(new Status(Color.valueOf(jsonSkills.getJsonObject("oilcheck").getString("color")), jsonSkills.getJsonObject("oilcheck").getString("comment"))); 
         skills.setRoundabout(new Status(Color.valueOf(jsonSkills.getJsonObject("roundabout").getString("color")), jsonSkills.getJsonObject("roundabout").getString("comment")));
         skills.setHighway(new Status(Color.valueOf(jsonSkills.getJsonObject("highway").getString("color")), jsonSkills.getJsonObject("highway").getString("comment")));
-        skills.setOrdernr(ordernr);
+        
         return skills;
     }
     

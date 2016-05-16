@@ -20,7 +20,6 @@ public class Skills
     @GeneratedValue
     private int skillId;
     
-    private int ordernr;
     
     @ManyToOne
     private Student student;
@@ -224,14 +223,6 @@ public class Skills
         this.tires = new Status();
     }
 
-    public int getOrdernr() {
-        return ordernr;
-    }
-
-    public void setOrdernr(int ordernr) {
-        this.ordernr = ordernr;
-    }
-    
     
 
     @Override
