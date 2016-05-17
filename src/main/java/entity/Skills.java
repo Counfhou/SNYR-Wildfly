@@ -223,6 +223,14 @@ public class Skills
         this.tires = new Status();
     }
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
     
 
     @Override

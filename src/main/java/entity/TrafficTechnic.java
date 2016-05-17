@@ -226,6 +226,16 @@ public class TrafficTechnic {
         this.turningright = new Status();
     }
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    
+    
     @Override
     public int hashCode() {
         int hash = 7;

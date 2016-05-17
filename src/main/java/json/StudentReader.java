@@ -76,12 +76,22 @@ public class StudentReader implements MessageBodyReader<Student>{
                                 
                 Skills[] skills = {studentAddSkill(jsonStudent.getJsonObject("skills1")),studentAddSkill(jsonStudent.getJsonObject("skills2")),studentAddSkill(jsonStudent.getJsonObject("skills3"))};
                 student.setSkills(skills);
+                for(Skills skill: student.getSkills()){
+                    skill.setStudent(student);
+                }
                 
                 DriveTechnic[] drivetechnic = {studentAddDriveTechnic(jsonStudent.getJsonObject("drive1")),studentAddDriveTechnic(jsonStudent.getJsonObject("drive2")),studentAddDriveTechnic(jsonStudent.getJsonObject("drive3"))};
                 student.setDriveTechnics(drivetechnic);
+                for(DriveTechnic drive : student.getDriveTechnics()){
+                    drive.setStudent(student);
+                }
                 
                 TrafficTechnic[] trafficTechnics = {studentAddTrafficTechnic(jsonStudent.getJsonObject("traffic1")),studentAddTrafficTechnic(jsonStudent.getJsonObject("traffic2")),studentAddTrafficTechnic(jsonStudent.getJsonObject("traffic3"))};
                 student.setTrafficTechnics(trafficTechnics);
+                for(TrafficTechnic traffic : student.getTrafficTechnics()){
+                    traffic.setStudent(student);
+                }
+                
                 return student;
               }
               catch(JsonException|ClassCastException ex){
