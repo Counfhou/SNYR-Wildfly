@@ -61,7 +61,6 @@ public class StudentWriter implements MessageBodyWriter<Student> {
             JsonArray array = Json.createArrayBuilder().
                     add(student.getEvasDone().get(0)).add(student.getEvasDone().get(1)).add(student.getEvasDone().get(2)).build();
             jsonStudent.add("evasdone", array);
-            array.clear();
             /*skills toevoegen*/
             jsonStudent.add("skills1", getJsonSkillObject(student.getSkills().get(0)));
             jsonStudent.add("skills2", getJsonSkillObject(student.getSkills().get(1)));

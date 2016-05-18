@@ -7,6 +7,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
@@ -38,22 +39,22 @@ public class Student
     private final static int AANTALEVALUTIES=3;
     
     private int evanumber; /*hoeveeste evaluatie dit is*/
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<Boolean> evasDone = new ArrayList<>(AANTALEVALUTIES);
     /*boolean array die bij houdt of een evaluatie al is gebruikt*/
 
     
   //  
-    @OneToMany(mappedBy = "student", cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Skills> skills = new ArrayList<>(AANTALEVALUTIES); /*arrays die de verschillende skills bijhouden*/
-    @OneToMany(mappedBy = "student", cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<DriveTechnic> drivetechnics = new ArrayList<>(AANTALEVALUTIES);
-    @OneToMany(mappedBy = "student", cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<TrafficTechnic>  traffictechnics = new ArrayList<>(AANTALEVALUTIES);
    
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     List<String> attitudes = new ArrayList<>(AANTALEVALUTIES);
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     private List<Double> progreses = new ArrayList<>(AANTALEVALUTIES);
     /*progress van de progressbar/abx level*/
     

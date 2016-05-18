@@ -9,6 +9,7 @@ import java.io.OutputStream;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
+import java.math.BigDecimal;
 import java.util.List;
 import javax.json.Json;
 import javax.json.JsonArray;
@@ -60,6 +61,7 @@ public class StudentListWriter implements MessageBodyWriter<List<Student>>{
             jsonStudent.add("voornaam", student.getVoornaam());
             jsonStudent.add("achternaam", student.getAchternaam());
             jsonStudent.add("email", student.getEmail());
+            jsonStudent.add("studentnr", student.getStudentnr());
             //jsonStudent.add("studentnr", student.getStudentnr()); --> nog geen number want adden
             /*current eva number, waar hervatten*/
             jsonStudent.add("currenteva", student.getEvanumber());
@@ -68,7 +70,6 @@ public class StudentListWriter implements MessageBodyWriter<List<Student>>{
             JsonArray array = Json.createArrayBuilder().
                     add(student.getEvasDone().get(0)).add(student.getEvasDone().get(1)).add(student.getEvasDone().get(2)).build();
             jsonStudent.add("evasdone", array);
-            array.clear();
             /*skills toevoegen*/
             jsonStudent.add("skills1", getJsonSkillObject(student.getSkills().get(0)));
             jsonStudent.add("skills2", getJsonSkillObject(student.getSkills().get(1)));
