@@ -48,6 +48,7 @@ public class StudentReader implements MessageBodyReader<Student>{
                 student.setAchternaam(jsonStudent.getString("achternaam"));
                 student.setEmail(jsonStudent.getString("email"));
                 student.setEvanumber(jsonStudent.getInt("currenteva"));
+                student.setStudentnr(jsonStudent.getInt("studentnr", 0));
                 
                 //student.setAttitudes((String[]) jsonStudent.getJsonArray("attitudes").toArray());
                 JsonArray jsonAttitudes = jsonStudent.getJsonArray("attitudes");

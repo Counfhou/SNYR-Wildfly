@@ -6,6 +6,7 @@
 package resources;
 
 import entity.Student;
+import java.io.InputStream;
 import java.net.URI;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -17,6 +18,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -69,6 +71,21 @@ public class Students
         return student;
     }
     
+    //@Path("updateStudents")
+   //@Path("{studentId}")
+    @PUT
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void updateStudents(List<Student> students){
+        System.out.println("bereikt");
+        //em.merge(updatestudent);
+//        for(Student student:students){
+//            /*detach*/
+//            em.merge(student);
+//                     
+//        }
+        Response.status(204);
+    }
+    
 //    @Path("{studentId}")
 //    @PUT
 //    @Consumes (MediaType.APPLICATION_JSON)
@@ -93,8 +110,8 @@ public class Students
     
     @Path("{studentId}")
     @DELETE
-    public void removeStudent (@PathParam("studentId") int studentId)
-    {
+    public void removeStudent (@PathParam("studentId") String studentId)
+    {   
         Student student = em.find(Student.class, studentId);
         
         if (student == null) {
@@ -103,4 +120,7 @@ public class Students
         
         em.remove(student);
     }
+    
+    
+    
 }
