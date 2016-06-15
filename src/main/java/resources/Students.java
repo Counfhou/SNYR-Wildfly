@@ -76,13 +76,12 @@ public class Students
     @PUT
     @Consumes(MediaType.APPLICATION_JSON)
     public void updateStudents(List<Student> students){
-        System.out.println("bereikt");
         //em.merge(updatestudent);
-//        for(Student student:students){
-//            /*detach*/
-//            em.merge(student);
-//                     
-//        }
+        for(Student student:students){
+            /*detach*/
+            /*student updaten*/
+             em.merge(student);        
+        }
         Response.status(204);
     }
     
@@ -110,7 +109,7 @@ public class Students
     
     @Path("{studentId}")
     @DELETE
-    public void removeStudent (@PathParam("studentId") String studentId)
+    public void removeStudent (@PathParam("studentId") int studentId)
     {   
         Student student = em.find(Student.class, studentId);
         

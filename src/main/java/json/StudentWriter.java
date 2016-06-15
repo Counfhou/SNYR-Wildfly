@@ -94,6 +94,7 @@ public class StudentWriter implements MessageBodyWriter<Student> {
     
   public JsonObject getJsonSkillObject(Skills skills){
         return Json.createObjectBuilder()
+                .add("id", skills.getSkillId())
                 .add("fueling", Json.createObjectBuilder()
                         .add("comment", skills.getFueling().getComment())
                         .add("color", skills.getFueling().getColor().toString()))
@@ -130,6 +131,7 @@ public class StudentWriter implements MessageBodyWriter<Student> {
     
     public JsonObject getJsonDriveTechnichObject(DriveTechnic drivetechnic){
         return Json.createObjectBuilder()
+                .add("id", drivetechnic.getDriveId())
                 .add("posture", Json.createObjectBuilder()
                         .add("comment", drivetechnic.getPosture().getComment())
                         .add("color", drivetechnic.getPosture().getColor().toString()))
@@ -175,6 +177,7 @@ public class StudentWriter implements MessageBodyWriter<Student> {
     
     public JsonObject getJsonTrafficTechnicObject(TrafficTechnic trafficTechnic){
         return Json.createObjectBuilder()
+                .add("id", trafficTechnic.getTrafficId())
                 .add("indicators", Json.createObjectBuilder()
                         .add("comment", trafficTechnic.getIndicators().getComment())
                         .add("color", trafficTechnic.getIndicators().getColor().toString()))

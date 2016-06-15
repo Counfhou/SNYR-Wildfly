@@ -65,6 +65,7 @@ public class StudentListReader implements MessageBodyReader <List<Student>> {
                 student.setAchternaam(jsonStudent.getString("achternaam"));
                 student.setEmail(jsonStudent.getString("email"));
                 student.setEvanumber(jsonStudent.getInt("currenteva"));
+                student.setStudentnr(jsonStudent.getInt("studentnr"));
                 
                 //student.setAttitudes((String[]) jsonStudent.getJsonArray("attitudes").toArray());
                 JsonArray jsonAttitudes = jsonStudent.getJsonArray("attitudes");
@@ -93,12 +94,21 @@ public class StudentListReader implements MessageBodyReader <List<Student>> {
                                 
                 Skills[] skills = {studentAddSkill(jsonStudent.getJsonObject("skills1")),studentAddSkill(jsonStudent.getJsonObject("skills2")),studentAddSkill(jsonStudent.getJsonObject("skills3"))};
                 student.setSkills(skills);
+                for(Skills skill: student.getSkills()){
+                    skill.setStudent(student);
+                }
                 
                 DriveTechnic[] drivetechnic = {studentAddDriveTechnic(jsonStudent.getJsonObject("drive1")),studentAddDriveTechnic(jsonStudent.getJsonObject("drive2")),studentAddDriveTechnic(jsonStudent.getJsonObject("drive3"))};
                 student.setDriveTechnics(drivetechnic);
+                for(DriveTechnic drive : student.getDriveTechnics()){
+                    drive.setStudent(student);
+                }
                 
                 TrafficTechnic[] trafficTechnics = {studentAddTrafficTechnic(jsonStudent.getJsonObject("traffic1")),studentAddTrafficTechnic(jsonStudent.getJsonObject("traffic2")),studentAddTrafficTechnic(jsonStudent.getJsonObject("traffic3"))};
                 student.setTrafficTechnics(trafficTechnics);
+                for(TrafficTechnic traffic : student.getTrafficTechnics()){
+                    traffic.setStudent(student);
+                }
                 
                 students.add(student);
             }
@@ -108,8 +118,9 @@ public class StudentListReader implements MessageBodyReader <List<Student>> {
         }
     }
     
-    public Skills studentAddSkill(JsonObject jsonSkills){
+     public Skills studentAddSkill(JsonObject jsonSkills){
         Skills skills = new Skills();
+        skills.setSkillId(jsonSkills.getInt("id", 0));
         skills.setFueling(new Status(Color.valueOf(jsonSkills.getJsonObject("fueling").getString("color")), jsonSkills.getJsonObject("fueling").getString("comment")));
         skills.setGps(new Status(Color.valueOf(jsonSkills.getJsonObject("gps").getString("color")), jsonSkills.getJsonObject("gps").getString("comment")));
         skills.setTires(new Status(Color.valueOf(jsonSkills.getJsonObject("tires").getString("color")), jsonSkills.getJsonObject("tires").getString("comment")));
@@ -126,6 +137,7 @@ public class StudentListReader implements MessageBodyReader <List<Student>> {
     
     public DriveTechnic studentAddDriveTechnic( JsonObject jsonDrivetechnic){
         DriveTechnic drivetechnic = new DriveTechnic();
+        drivetechnic.setDriveId(jsonDrivetechnic.getInt("id", 0));
         drivetechnic.setPosture(new Status(Color.valueOf(jsonDrivetechnic.getJsonObject("posture").getString("color")), jsonDrivetechnic.getJsonObject("posture").getString("comment")));
         drivetechnic.setClutch(new Status(Color.valueOf(jsonDrivetechnic.getJsonObject("clutch").getString("color")), jsonDrivetechnic.getJsonObject("clutch").getString("comment")));
         drivetechnic.setBraking(new Status(Color.valueOf(jsonDrivetechnic.getJsonObject("braking").getString("color")), jsonDrivetechnic.getJsonObject("braking").getString("comment")));
@@ -145,6 +157,7 @@ public class StudentListReader implements MessageBodyReader <List<Student>> {
     
     public TrafficTechnic studentAddTrafficTechnic(JsonObject jsonTraffictechnic){
         TrafficTechnic trafficTechnic=new TrafficTechnic();
+        trafficTechnic.setTrafficId(jsonTraffictechnic.getInt("id", 0));
         trafficTechnic.setIndicators(new Status(Color.valueOf(jsonTraffictechnic.getJsonObject("indicators").getString("color")), jsonTraffictechnic.getJsonObject("indicators").getString("comment")));
         trafficTechnic.setPublicroad(new Status(Color.valueOf(jsonTraffictechnic.getJsonObject("publicroad").getString("color")), jsonTraffictechnic.getJsonObject("publicroad").getString("comment")));
         trafficTechnic.setPriority(new Status(Color.valueOf(jsonTraffictechnic.getJsonObject("priority").getString("color")), jsonTraffictechnic.getJsonObject("priority").getString("comment")));

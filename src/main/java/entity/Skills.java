@@ -184,6 +184,16 @@ public class Skills
         this.highway = highway;
     }
 
+    public int getSkillId() {
+        return skillId;
+    }
+
+    public void setSkillId(int skillId) {
+        this.skillId = skillId;
+    }
+    
+    
+
     public Skills(Status fueling, Status gps, Status tires, Status emergencystop, Status citytraffic, Status doublelane, Status lights, Status oilcheck, Status roundabout, Status highway) {
         this.fueling = fueling;
         this.gps = gps;

@@ -290,6 +290,15 @@ public class DriveTechnic
     public void setStudent(Student student) {
         this.student = student;
     }
+
+    public int getDriveId() {
+        return driveId;
+    }
+
+    public void setDriveId(int driveId) {
+        this.driveId = driveId;
+    }
+    
     
     
 

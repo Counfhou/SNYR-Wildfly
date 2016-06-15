@@ -186,6 +186,16 @@ public class TrafficTechnic {
         this.turningright = turningright;
     }
 
+    public int getTrafficId() {
+        return trafficId;
+    }
+
+    public void setTrafficId(int trafficId) {
+        this.trafficId = trafficId;
+    }
+    
+    
+
     public TrafficTechnic(Status indicators, Status publicroad, Status priority, Status sign, Status speed, Status distance, Status overtaking, Status crossing, Status turningleft, Status turningright) {
         this.indicators = indicators;
         this.publicroad = publicroad;
