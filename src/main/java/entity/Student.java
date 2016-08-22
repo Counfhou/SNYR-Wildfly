@@ -49,10 +49,13 @@ public class Student
     
   //  
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Skills> skills = new ArrayList<>(AANTALEVALUTIES); /*arrays die de verschillende skills bijhouden*/
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<DriveTechnic> drivetechnics = new ArrayList<>(AANTALEVALUTIES);
     @OneToMany(mappedBy = "student", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<TrafficTechnic>  traffictechnics = new ArrayList<>(AANTALEVALUTIES);
    
     @ElementCollection(fetch = FetchType.EAGER)
