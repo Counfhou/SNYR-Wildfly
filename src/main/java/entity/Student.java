@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.OrderBy;
 import javax.persistence.Transient;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 /**
  *
@@ -40,6 +42,7 @@ public class Student
     
     private int evanumber; /*hoeveeste evaluatie dit is*/
     @ElementCollection(fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Boolean> evasDone = new ArrayList<>(AANTALEVALUTIES);
     /*boolean array die bij houdt of een evaluatie al is gebruikt*/
 
@@ -53,8 +56,10 @@ public class Student
     private List<TrafficTechnic>  traffictechnics = new ArrayList<>(AANTALEVALUTIES);
    
     @ElementCollection(fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     List<String> attitudes = new ArrayList<>(AANTALEVALUTIES);
     @ElementCollection(fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     private List<Double> progreses = new ArrayList<>(AANTALEVALUTIES);
     /*progress van de progressbar/abx level*/
     
