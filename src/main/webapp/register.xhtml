@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <ui:composition template="template.xhtml">
+        <ui:define name="title"> Registeer</ui:define>
+        <ui:define name="content">
+            <h1>Registreer een nieuwe student</h1>
+            <h:form>
+                <h:panelGrid columns="3">
+                <h:outputLabel for="firstname" value="Firstname"/>
+                <h:inputText id="firstname" value="#{registerController.student.voornaam}"
+                             required="true" maxlength="30" />
+                <p:message for="firstname" />
+                
+                <h:outputLabel for="lastname" value="Lastname"/>
+                <h:inputText id="lastname" value="#{registerController.student.achternaam}"
+                             required="true" maxlength="30"/>
+                <p:message for="lastname"/>
+
+                
+                </h:panelGrid>
+                
+                <h:commandButton value="registreer" action="#{registerController.add()}"/>
+            </h:form>
+            
+        </ui:define>
+    </ui:composition>
+</html>
+
+

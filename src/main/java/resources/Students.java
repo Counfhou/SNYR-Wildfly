@@ -9,6 +9,7 @@ import entity.Student;
 import java.io.InputStream;
 import java.net.URI;
 import java.util.List;
+import javax.enterprise.context.ApplicationScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -31,6 +32,7 @@ import javax.ws.rs.core.Response;
  */
 @Path("students")
 @Transactional
+@ApplicationScoped
 public class Students 
 {
     @PersistenceContext
